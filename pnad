@@ -1,0 +1,91 @@
+import pandas as pd
+import numpy as np
+import statistics as stat
+import matplotlib.pyplot as plt
+
+# URL do arquivo CSV
+url = 'https://raw.githubusercontent.com/neylsoncrepalde/introducao_ao_r/refs/heads/master/dados/pes_2012.csv'
+
+# Carregar o dataset
+data = pd.read_csv(url)
+
+# Visualizar as primeiras linhas do dataframe
+print("Primeiras linhas do dataframe:")
+print(data.head())
+
+# Verificar informações gerais sobre o dataframe
+print("\nInformações sobre o dataframe:")
+print(data.info())
+
+# Contar a frequência de uma coluna específica (exemplo: V4718)
+if 'V4718' in data.columns:
+    frequencia = data['V4718'].value_counts()
+    print("\nFrequência dos valores na coluna V4718:")
+    print(frequencia)
+else:
+    print("\nColuna V4718 não encontrada no dataframe.")
+
+# Filtrar dados onde o nível de instrução é 'Superior'
+if 'V4718' in data.columns:
+    filtrados = data[data['V4718'] == 'Superior']
+    print("\nDados filtrados onde o nível de instrução é 'Superior':")
+    print(filtrados)
+
+# Adicionar uma nova coluna com a renda dobrada (supondo que V4720 seja a renda)
+if 'V4720' in data.columns:
+    data['Renda_Dobrada'] = data['V4720'] * 2
+    print("\nPrimeiras linhas do dataframe após adicionar a nova coluna 'Renda_Dobrada':")
+    print(data.head())
+else:
+    print("\nColuna V4720 não encontrada no dataframe.")
+
+"""
+1. V0101
+
+    Descrição: Este código geralmente representa um identificador do entrevistado, como um número de identificação.
+    Tipo: int64 (número inteiro).
+
+2. UF
+
+    Descrição: Esta coluna indica a Unidade da Federação (UF) do Brasil. Ela contém siglas que representam os estados, como "SP" para São Paulo, "RJ" para Rio de Janeiro, etc.
+    Tipo: object (string).
+
+3. V0302
+
+    Descrição: Esta variável geralmente se refere à cor ou raça do entrevistado. As opções costumam incluir categorias como "Branca", "Preta", "Parda", "Amarela", "Indígena".
+    Tipo: object (string).
+
+4. V8005
+
+    Descrição: Este código normalmente representa a variável de "Renda do Trabalho", indicando a renda mensal do trabalho do entrevistado. Pode estar em valores inteiros, como o valor da renda em reais.
+    Tipo: int64 (número inteiro).
+
+5. V0404
+
+    Descrição: Esta variável costuma indicar a situação de atividade do entrevistado, como "Empregado", "Desempregado", "Aposentado", etc.
+    Tipo: object (string).
+
+6. V4803
+
+    Descrição: Geralmente refere-se ao nível de instrução ou escolaridade do entrevistado. Pode incluir categorias como "Ensino Fundamental", "Ensino Médio", "Ensino Superior", etc.
+    Tipo: object (string).
+
+7. V4718
+
+    Descrição: Esta variável indica o nível de instrução. É uma medida da formação educacional do entrevistado e pode ter valores como "Nenhum", "Fundamental Completo", "Médio Completo", "Superior Completo", etc.
+    Tipo: object (string). A presença de valores nulos sugere que nem todos os entrevistados informaram seu nível de instrução.
+
+8. V4720
+
+    Descrição: Esta coluna geralmente contém informações sobre a renda do entrevistado ou de sua família. O fato de ser um object sugere que pode haver valores não numéricos ou que os dados podem não estar formatados corretamente.
+    Tipo: object (string). A presença de valores nulos indica que nem todos os entrevistados forneceram informações sobre a renda.
+
+9. V4729
+
+    Descrição: Comumente representa uma variável numérica relacionada à renda ou outra métrica quantitativa (por exemplo, a renda total da família). É um número inteiro, possivelmente relacionado à renda em uma unidade específica.
+    Tipo: int64 (número inteiro).
+
+"""
+
+
+
