@@ -1,0 +1,40 @@
+#Grafico para construção Histograma Aula 2
+#Data 07/10/24
+
+import pandas as pd
+import numpy as np
+import statistics as stat
+import matplotlib.pyplot as plt
+
+# Carregar os dados
+data = pd.read_csv('/home/vitor/mestrado/2024_2/Aprendizado_Maquinas/Aula_02/Aula II/mpg.csv')
+
+# Plotando o histograma para 'displ', 'cyl' e 'hwy'
+plt.figure(figsize=(15, 5))
+
+# Histograma para 'displ'
+plt.subplot(1, 3, 1)
+plt.hist(data['displ'], bins=10, color='blue', edgecolor='black', alpha=0.7)
+plt.title('Histograma de displ')
+plt.xlabel('displ')
+plt.ylabel('Frequência')
+
+# Histograma para 'cyl'
+plt.subplot(1, 3, 2)
+plt.hist(data['cyl'], bins=10, color='green', edgecolor='black', alpha=0.7)
+plt.title('Histograma de cyl')
+
+
+plt.xlabel('cyl')
+plt.ylabel('Frequência')
+
+# Histograma para 'hwy'
+plt.subplot(1, 3, 3)
+plt.hist(data['hwy'], bins=10, color='red', edgecolor='black', alpha=0.7)
+plt.title('Histograma de hwy')
+plt.xlabel('hwy')
+plt.ylabel('Frequência')
+
+# Ajustando o layout e exibindo o gráfico
+plt.tight_layout()
+plt.show()
